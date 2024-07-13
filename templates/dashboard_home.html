@@ -1,0 +1,496 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        text-align: center;
+    }
+    .card {
+        display: inline-block;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: left;
+        text-decoration: none;
+        color: #fff;
+    }
+    h1 {
+        margin-top: 0;
+        text-align: center;
+    }
+    a{
+        text-decoration: none;
+    }
+    .overall-attendance {
+        background-color: #3498db;
+    }
+    .daily-attendance {
+        background-color: #2980b9;
+    }
+    .attendance-trends {
+        background-color: #1abc9c;
+    }
+    .attendance-summary {
+        background-color: #16a085;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Attendance Tracking System</h1>
+    <div class="card overall-attendance">
+        <a href="/overall_attendance">
+            <h2>Overall Attendance Rate</h2>
+            <p>75%</p>
+        </a>
+    </div>
+    <div class="card daily-attendance">
+        <a href="#daily-attendance">
+            <h2>Daily Attendance Status</h2>
+            <p>Present</p>
+        </a>
+    </div>
+    <div class="card attendance-trends">
+        <a href="#attendance-trends">
+            <h2>Attendance Trends</h2>
+            <p>Increasing</p>
+        </a>
+    </div>
+    <div class="card attendance-summary">
+        <a href="#attendance-summary">
+            <h2>Attendance Summary</h2>
+            <p>Out of 100 students, 80 were present today.</p>
+        </a>
+    </div>
+</div>
+</body>
+</html> -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<!-- <link type="text/css" rel="stylesheet" href="{% static 'css/teacher_page.css' %}"> -->
+<style>
+    
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f2f2; /* Dark background color */
+    }
+    
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: rgba(37, 141, 202, 0.5); /* Semi-transparent dark background */
+    }
+    .card {
+        background: linear-gradient(to bottom right, #007bff, #ffffff);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        padding: 20px;
+        margin: 0 10px;
+        text-align: center;
+        transition: transform 0.3s;
+        background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background for cards */
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card h2 {
+        margin-top: 0;
+        color: #333;
+    }
+    .card p {
+        color: #666;
+    }
+    .card a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+    }
+    .wrap2{
+        background-color: rgba(16, 4, 64, 1);
+        padding: 45px;
+    }
+    li,.menu{
+        display: inline;
+        position: relative;
+    }
+    .menu{
+      bottom: 40px;
+        left: 55%;
+    }
+    li{
+        font-size: 20px;
+        margin: 18px;
+    }
+    a{
+        text-decoration: none;
+        color :rgba(255, 2, 123, 1);;
+    }
+    .paral,
+    .paral::after,
+    .paral::before {
+      box-sizing: border-box;
+    }
+      
+    
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+        margin-bottom: 100px;
+      }
+      
+      .wrap {
+        margin: 2rem;
+      
+        transform-style: preserve-3d;
+        transform: perspective(100rem);
+      
+        cursor: pointer;
+      }
+      
+      .container {
+        --rX: 0;
+        --rY: 0;
+        --bX: 50%;
+        --bY: 80%;
+      
+        width: 10rem;
+        height: 16rem;
+        border: 1px solid var(--background-color);
+        border-radius: 1.6rem;
+        padding: 4rem;
+      
+        display: flex;
+        align-items: flex-end;
+      
+        position: relative;
+        transform: rotateX(calc(var(--rX) * 1deg)) rotateY(calc(var(--rY) * 1deg));
+      
+        background: linear-gradient(hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1));
+        background-position: var(--bX) var(--bY);
+        background-size: 40rem auto;
+        box-shadow: 0 0 3rem .5rem hsla(0, 0%, 0%, .2);
+      
+        transition: transform .6s 1s;
+      }
+    
+      
+      .container::before,
+      .container::after {
+        content: "";
+      
+        width: 2rem;
+        height: 2rem;
+        border: 1px solid #fff;
+      
+        position: absolute;
+        z-index: 2;
+      
+        opacity: .3;
+        transition: .3s;
+      }
+      
+      .container::before {
+        top: 2rem;
+        right: 2rem;
+      
+        border-bottom-width: 0;
+        border-left-width: 0;
+      }
+      
+      .container::after {
+        bottom: 2rem;
+        left: 2rem;
+      
+        border-top-width: 0;
+        border-right-width: 0;
+      }
+      
+      .container--active {
+        transition: none;
+      }
+      
+      .container--2 {
+        filter: hue-rotate(80deg) saturate(140%);
+      }
+      
+      .container--3 {
+        filter: hue-rotate(160deg) saturate(140%);
+      }
+      
+      .container p {
+        color: hsla(0, 0%, 100%, .6);
+        font-size: 2.2rem;
+      }
+      
+      .wrap:hover .container::before,
+      .wrap:hover .container::after {
+        width: calc(100% - 4rem);
+        height: calc(100% - 4rem);
+      }
+      
+      .abs-site-link {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        color: hsla(0, 0%, 0%, .6);
+        font-size: 1.6rem;
+      }
+      .footer {
+        background-color: rgba(16, 4, 64, 1);
+        color: white;
+        padding-top: 40px;
+        padding-bottom: 75px;
+        display: flex;
+        justify-content: space-around;
+      }
+      
+      .feau-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .feau {
+        padding-left: 100px;
+      }
+      
+      .ben {
+        padding-right: 100px;
+      }
+
+
+      .container--1 {
+        background-image: url("{% static 'images/image1.jpg' %}"); /* Replace "image1.jpg" with the path to your first image */
+    }
+    
+    .container--2 {
+        background-image: url("{% static 'images/image1.jpg' %}"); /* Replace "image2.jpg" with the path to your second image */
+    }
+    .container--3 {
+      background-image: url("{% static 'images/image1.jpg' %}"); 
+    }
+     .container--4 {
+        background-image: url("{% static 'images/image1.jpg' %}"); /* Replace "image3.jpg" with the path to your third image */
+    }
+
+
+</style>
+</head>
+<body>
+    <div class="wrap2">
+      <h1 style="color: rgba(255, 2, 123, 1);">Attendance Tracking System</h1>
+    </div>
+<!-- <div class="container">
+    <div class="card">
+        <h2>Attendance Entry</h2>
+        <p>Click below to enter attendance</p>
+        <a href="/attendance_entry">Enter Attendance</a>
+    </div>
+    <div class="card">
+        <h2>Statistics</h2>
+        <p>View attendance statistics</p>
+        <a href="/statistics">View Statistics</a>
+    </div>
+    <div class="card">
+        <h2>Report</h2>
+        <p>Generate attendance report</p>
+        <a href="/report">Generate Report</a>
+    </div> -->
+    <div class="paral">
+        <section class="main">
+
+          <div class="wrap wrap--1" onclick="redirect('attendance_tracking');">
+            <div class="container container--1">
+              <p>Track Afternoon Abentees</p>
+            </div>
+          </div>
+          
+          <div class="wrap wrap--2" onclick="redirect('daily_attendance');">
+            <div class="container container--2">
+              <p>Overall Attendance</p>
+            </div>
+          </div>
+          
+          <div class="wrap wrap--3" onclick="redirect('attendance_status');">
+            <div class="container container--3">
+              <p>Attendance Status</p>
+            </div>
+          </div>
+          <div class="wrap wrap--4" onclick="redirect('attendance_summary');">
+            <div class="container container--4">
+              <p>Attendance Summary</p>
+            </div>
+          </div>
+          <script>
+            function redirectToPage(page) {
+              window.location.href = page;
+            }
+            </script>
+          </section>
+          <!-- <a href="https://abubakersaeed.netlify.app/designs/d10-parallax-tilt-effect-cards" class="abs-site-link" rel="nofollow noreferrer" target="_blank">abs/designs/d10-parallax-tilt-effect-cards</a> -->
+    </div>
+    <div class="footer">    
+        <div class="feau-wrapper">
+          <h5 style="margin-left: 100px;">FEATURES:</h5>
+          <p class="feau">
+            
+            <br>
+            <br>
+            Fast and Easy Attendance Entry.<br>
+            <br>
+            Students, Class and Grade Dashboards<br>
+            <br>
+            
+            Customizable Attendance Reporting<br>
+            <br>
+            Simple Data Export
+            <br></p>
+            </div>
+            <div class="ben">
+              <p class="fit">
+               <h5> BENEFITS: </h5>
+    <br><br>
+    Track Attendance From Anywhere <br><br>
+    
+    Perfect For Any Class Or Group <br><br>
+    Teacher Parent Messaging System<br>
+            <br>
+    
+    Great Import And Export Tools <br>
+              </p>
+            </div>
+        </div>
+    <script>
+        class parallaxTiltEffect {
+
+constructor({element, tiltEffect}) {
+
+this.element = element;
+this.container = this.element.querySelector(".container");
+this.size = [300, 360];
+[this.w, this.h] = this.size;
+
+this.tiltEffect = tiltEffect;
+
+this.mouseOnComponent = false;
+
+this.handleMouseMove = this.handleMouseMove.bind(this);
+this.handleMouseEnter = this.handleMouseEnter.bind(this);
+this.handleMouseLeave = this.handleMouseLeave.bind(this);
+this.defaultStates = this.defaultStates.bind(this);
+this.setProperty = this.setProperty.bind(this);
+this.init = this.init.bind(this);
+
+this.init();
+}
+
+handleMouseMove(event) {
+const {offsetX, offsetY} = event;
+
+let X;
+let Y;
+
+if (this.tiltEffect === "reverse") {
+X = ((offsetX - (this.w/2)) / 3) / 3;
+Y = (-(offsetY - (this.h/2)) / 3) / 3;
+}
+
+else if (this.tiltEffect === "normal") {
+X = (-(offsetX - (this.w/2)) / 3) / 3;
+Y = ((offsetY - (this.h/2)) / 3) / 3;
+}
+
+this.setProperty('--rY', X.toFixed(2));
+this.setProperty('--rX', Y.toFixed(2));
+
+this.setProperty('--bY', (80 - (X/4).toFixed(2)) + '%');
+this.setProperty('--bX', (50 - (Y/4).toFixed(2)) + '%');
+}
+
+handleMouseEnter() {
+this.mouseOnComponent = true;
+this.container.classList.add("container--active");
+}
+
+handleMouseLeave() {
+this.mouseOnComponent = false;
+this.defaultStates();
+}
+
+defaultStates() {
+this.container.classList.remove("container--active");
+this.setProperty('--rY', 0);
+this.setProperty('--rX', 0);
+this.setProperty('--bY', '80%');
+this.setProperty('--bX', '50%');
+}
+
+setProperty(p, v) {
+return this.container.style.setProperty(p, v);
+}
+
+init() {
+this.element.addEventListener('mousemove', this.handleMouseMove);
+this.element.addEventListener('mouseenter', this.handleMouseEnter);
+this.element.addEventListener('mouseleave', this.handleMouseLeave);
+}
+
+}
+
+const $ = e => document.querySelector(e);
+
+const wrap1 = new parallaxTiltEffect({
+element: $('.wrap--1'),
+tiltEffect: 'reverse'
+});
+
+const wrap2 = new parallaxTiltEffect({
+element: $('.wrap--2'),
+tiltEffect: 'normal'
+});
+
+const wrap3 = new parallaxTiltEffect({
+element: $('.wrap--3'),
+tiltEffect: 'reverse'
+});
+const wrap4 = new parallaxTiltEffect({
+    element: $('.wrap--4'),
+    tiltEffect: 'reverse'
+    });
+      </script>
+      <script>
+        function redirect(page) {
+            window.location.href = window.location.origin + '/' + page;
+        }
+    </script>
+
+</div>
+</body>
+</html>

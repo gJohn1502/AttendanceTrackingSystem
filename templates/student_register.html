@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Register</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/logincss.css' %}">
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <!-- <script src="{% static 'js/student_register.js' %}"></script> -->
+    <!-- <script src="{% static 'js/loginjs.js' %}"></script> -->
+    <script>
+      function redirect(page) {
+          window.location.href = window.location.origin + '/' + page;
+      }
+    </script>
+
+</head>
+<body style="display:flex; align-items:center; justify-content:center;">
+<div class="login-page">
+  <div class="form">
+    <form class="register-form" id="registerForm" action="/student_register/" method="POST">
+      <h2>Register</h2>
+      {% csrf_token %}
+      {{ registerform }}
+      {% for message in messages %}
+      <div class="alert-message">
+        {{ message }}
+      </div>
+      {% endfor %}
+      <!-- <button type="submit">Create</button> -->
+      <!-- onlcick="window.location.href='student_register';" -->
+      <button class="btn" id="createButton" name="register" type="submit" >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Create
+      </button>
+      <p class="message">Already registered? <a href="{% url 'student_login' %}">Sign In</a></p>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

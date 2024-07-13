@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracking System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+           
+        }
+
+        header {
+            background-color:rgba(16, 4, 64, 1);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .menu {
+            display: flex;
+            background-color:rgba(16, 4, 64, 1);
+            color: white;
+            padding: 10px;
+            text-emphasis-color: rgba(255, 2, 123, 1);
+        }
+
+        .menu button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .menu button:hover {
+            background-color: rgb(33, 15, 106);
+        }
+
+        .content {
+            padding: 20px;
+
+           text-align: center;
+            justify-content: center;
+          margin-left: 500px;
+         
+            /* Aligning items to the top   min-height: 100vh;
+            background-color: #f0f0f0;
+*/
+           
+
+            background-color: #d8cfcf;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            margin-top: 50px; /* Adjusted margin */
+            margin-bottom: 50px; 
+            border: 3px dotted #09060c;
+        }
+     
+
+
+        .content h2 {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: none;
+           
+          
+           
+        }
+
+        form.active {
+            display: block;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+           margin-left: 55px;
+        }
+
+        input[type="submit"] {
+            background-color:rgba(16, 4, 64, 1);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover {
+            /* background-color: rgba(255, 2, 123, 1);*/
+            background: rgba(255, 2, 123, 1);
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(255, 2, 123, 1),
+                        0 0 25px rgba(255, 2, 123, 1),
+                        0 0 50px rgba(255, 2, 123, 1),
+                        0 0 100px rgba(255, 2, 123, 1);
+        }
+        .alert-danger{
+            color : red;
+        }
+        .alert-success{
+            color:  green;
+        }
+        .alert-info{
+            color: orange;
+        }
+        .footer {
+            background-color: rgba(16, 4, 64, 1);
+            color: white;
+            padding-top: 40px;
+            padding-bottom: 75px;
+            display: flex;
+            justify-content: space-around;
+          }
+          
+          .feau-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          
+          .feau {
+            padding-left: 100px;
+          }
+          
+          .ben {
+            padding-right: 100px;
+          }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 style="color: rgba(255, 2, 123, 1);background-color:rgba(16, 4, 64, 1)">Attendance Tracking System</h1>
+    </header>
+    <div class="menu">
+        <button onclick="toggle('dataEntry')">Data Entry</button>
+        <button onclick="toggle('attendanceEntry')">Attendance Excel Entry</button>
+    </div>
+    <div class="content">
+        <form id="dataEntry" class="active" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <h2>Data Entry Form</h2>
+            <label for="file">Choose File:</label>
+            <input type="file" id="file" name="myfile">
+            <label for="model">Select Model:</label>
+            <select id="datamodel" name="datamodel">
+                <option value="parent">Parent</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select><br><br>
+            <input type="submit" value="Upload File">
+            <h2>Please upload excel file</h2>
+        </form>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}" role="alert">
+        {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+
+        <form id="attendanceEntry" class="hidden" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <h2>Attendance Excel Entry Form</h2>
+            <label for="attendance_file">Choose File:</label>
+            <input type="file" id="attendance_file" name="myfile" >
+            <label for="attendance_model">Select Model:</label>
+            <select id="attendancemodel" name="attendancemodel">
+                <option value="attendance">Daily Attendance</option>
+            </select><br><br>
+            <input type="submit" value="Upload File">
+            <h2>Please upload excel file</h2>
+        </form>
+        </div>
+        <div class="footer">    
+            <div class="feau-wrapper">
+              <h5 style="margin-left: 100px;">FEATURES:</h5>
+              <p class="feau">
+                
+                <br>
+                <br>
+                Fast and Easy Attendance Entry.<br>
+                <br>
+                Students, Class and Grade Dashboards<br>
+                <br>
+                
+                Customizable Attendance Reporting<br>
+                <br>
+                Simple Data Export
+                <br></p>
+                </div>
+                <div class="ben">
+                  <p class="fit">
+                   <h5> BENEFITS: </h5>
+        <br><br>
+        Track Attendance From Anywhere <br><br>
+        
+        Perfect For Any Class Or Group <br><br>
+        Teacher Parent Messaging System<br>
+                <br>
+        
+        Great Import And Export Tools <br>
+                  </p>
+                </div>
+            </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var selectedModel = document.getElementById("datamodel").value;
+            if (selectedModel === "") {
+                document.getElementById("dataEntry").action = "/parent_upload/";
+            } else {
+                document.getElementById("dataEntry").action = "/" + selectedModel + "_upload/";
+            }
+        });
+        function toggle(id) {
+            var forms = document.querySelectorAll('.content form');
+            for (var i = 0; i < forms.length; i++) {
+                if (forms[i].id === id) {
+                    forms[i].classList.add('active');
+                } else {
+                    forms[i].classList.remove('active');
+                    
+                }
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var selectedModel = document.getElementById("attendancemodel").value;
+            if (selectedModel === "") {
+                document.getElementById("attendanceEntry").action = "/attendance_upload/";
+            } else {
+                document.getElementById("attendanceEntry").action = "/" + selectedModel + "_upload/";
+            }
+        });
+        document.getElementById("attendancemodel").addEventListener("change", function() {
+            var selectedModel = document.getElementById("attendancemodel").value;
+            if (selectedModel === "") {
+                document.getElementById("attendanceEntry").action = "/attendance_upload/";
+            } else {
+                document.getElementById("attendanceEntry").action = "/" + selectedModel + "_upload/";
+            }
+        });
+        document.getElementById("datamodel").addEventListener("change", function() {
+            var selectedModel = document.getElementById("datamodel").value;
+            if (selectedModel === "") {
+                document.getElementById("dataEntry").action = "/parent_upload/";
+            } else {
+                document.getElementById("dataEntry").action = "/" + selectedModel + "_upload/";
+            }
+        });
+        </script>
+    
+</body>
+
+</html>

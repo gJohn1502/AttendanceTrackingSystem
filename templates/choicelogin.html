@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login as</title>
+    <link rel="stylesheet" href="{% static 'css/choice.css' %}">
+</head>
+<body>
+    <script>
+        function redirect(page) {
+          window.location.href = page;
+        }
+        </script>
+    <div class="container">
+        <div class="card"onclick="redirect('student_login');">
+            <p class="heading">
+              I am Student
+            </p>
+            <p>
+              Login
+            </p>
+        </div>
+        <div class="card"onclick="redirect('teacher_login');">
+            <!-- Second card content here -->
+            <p class="heading">
+                I am Teacher
+              </p>
+              <p>
+                Login
+              </p>
+
+        </div>
+        <div class="card"onclick="redirect('parent_login');">
+            <!-- Third card content here -->
+            <p class="heading">
+                I am Parent
+              </p>
+              <p>
+                Login
+              </p>
+      
+        </div>
+    </div>
+    <script>
+      function redirect(page) {
+          window.location.href = window.location.origin + '/' + page;
+      }
+  </script>
+</body>
+</html>
+

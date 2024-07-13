@@ -1,0 +1,488 @@
+*{
+  margin: 0px;
+  padding: opx;
+}
+.wrap1{
+  background-color: rgba(16, 4, 64, 1);
+ 
+
+}
+li,.menu,.hov,.container1{
+  display: inline;
+  position: relative;
+  
+}
+.menu{
+  left: 55%;
+  
+  padding: 35px 0;
+}
+li{
+  font-size: 20px;
+  justify-content: space-between;
+  margin: 0 18px;
+}
+nav,button{
+  padding: 50px ;
+  margin-left: 15px;
+}
+a{
+ text-decoration: none;
+  color :rgba(255, 2, 123, 1);;
+}
+button{
+  width: 100px;
+  padding: 10px 0;
+  text-align: center;
+  margin: 10px 10px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid #e81691;
+  background-color: #e81691;
+  color:  rgba(16, 4, 64, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  left:55%
+}
+span{
+  background: #17c8b3;
+  height: 100%;
+  width:0%;
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+}
+button:hover span{
+  width: 100%;
+}
+button:hover{
+  border: none;
+}
+.container1 {
+  display: inline-block;
+  cursor: pointer;
+  z-index: 25;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: rgba(255, 2, 123, 1);
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+/* Fade out the second bar */
+.change .bar2 {opacity: 0;}
+
+/* Rotate last bar */
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+.header {
+  text-align: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 44px;
+  
+}
+h1{
+  position: relative;
+  top: 150px;
+  z-index: 5;
+}
+
+.area {
+  background: #8388ee;
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  height: 500px;
+  position: relative; /* Add position relative */
+  bottom: 120px;
+}
+
+.area h1 {
+  position: absolute; /* Add position absolute */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+  margin: 0; /* Remove default margin */
+  z-index: -1;
+}
+
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li{
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(66, 2, 42, 0.2);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+}
+.circles li:nth-child(1){
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+
+  0%{
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      border-radius: 0;
+  }
+
+  100%{
+      transform: translateY(-1000px) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
+  }
+
+}
+.fake{
+  text-align: center;
+  margin-left: 100px;
+  margin-right: 100px;
+  font-size: 25px;
+  position: relative;
+  bottom: 50px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+}
+.paral,
+.paral::after,
+.paral::before {
+box-sizing: border-box;
+}
+
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrap {
+  margin: 2rem;
+
+  transform-style: preserve-3d;
+  transform: perspective(100rem);
+
+  cursor: pointer;
+}
+
+.container {
+  --rX: 0;
+  --rY: 0;
+  --bX: 50%;
+  --bY: 80%;
+
+  width: 10rem;
+  height: 16rem;
+  border: 1px solid var(--background-color);
+  border-radius: 1.6rem;
+  padding: 4rem;
+
+  display: flex;
+  align-items: flex-end;
+
+  position: relative;
+  transform: rotateX(calc(var(--rX) * 1deg)) rotateY(calc(var(--rY) * 1deg));
+
+  background: linear-gradient(hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1));
+  background-position: var(--bX) var(--bY);
+  background-size: 40rem auto;
+  box-shadow: 0 0 3rem .5rem hsla(0, 0%, 0%, .2);
+
+  transition: transform .6s 1s;
+}
+.container::before,
+.container::after {
+  content: "";
+
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #fff;
+
+  position: absolute;
+  z-index: 2;
+
+  opacity: .3;
+  transition: .3s;
+}
+
+.container::before {
+  top: 2rem;
+  right: 2rem;
+
+  border-bottom-width: 0;
+  border-left-width: 0;
+}
+
+.container::after {
+  bottom: 2rem;
+  left: 2rem;
+
+  border-top-width: 0;
+  border-right-width: 0;
+}
+
+.container--active {
+  transition: none;
+}
+
+.container--2 {
+  filter: hue-rotate(80deg) saturate(140%);
+}
+
+.container--3 {
+  filter: hue-rotate(160deg) saturate(140%);
+}
+
+.container p {
+  color: hsla(0, 0%, 100%, .6);
+  font-size: 2.2rem;
+}
+
+.wrap:hover .container::before,
+.wrap:hover .container::after {
+  width: calc(100% - 4rem);
+  height: calc(100% - 4rem);
+}
+
+.abs-site-link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: hsla(0, 0%, 0%, .6);
+  font-size: 1.6rem;
+}
+.quote{
+  background-color: rgba(16, 4, 64, 1);
+  color: #e81691;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  text-align: center;
+  font-size: 45px;
+  font-style: italic;
+ 
+}
+.qu{display: inline;
+  margin-left: 35px;
+  margin-right: 35px;
+
+}
+.somcon{
+margin-top: 150px;
+  margin-bottom: 100px;
+  margin-right: 200px;
+  margin-left: 200px;
+  font-size: 24px;
+background-color: rgb(213, 207, 207,0.5);
+backdrop-filter: blur(50%);
+font-family: Georgia, 'Times New Roman', Times, serif;
+padding-right: 600px;
+
+}
+.sc{
+z-index: +1;
+display: inline;
+
+}
+.footer {
+background-color: rgba(16, 4, 64, 1);
+color: white;
+padding-top: 40px;
+padding-bottom: 75px;
+display: flex;
+justify-content: space-around;
+}
+
+.feau-wrapper {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+
+.feau {
+padding-left: 100px;
+}
+
+.ben {
+padding-right: 100px;
+}
+@media only screen and (max-width: 768px) {
+.menu {
+  margin-left: 0; /* Remove margin for the menu */
+  text-align: center; /* Center align menu items */
+}
+
+li {
+  display: block; /* Display list items as blocks */
+  margin: 10px auto; /* Add margin to each list item */
+}
+
+.hov {
+  margin-top: 20px; /* Adjust margin for login button */
+}
+
+.header {
+  font-size: 30px; /* Decrease font size of header */
+}
+
+.fake {
+  font-size: 18px; /* Decrease font size of paragraph */
+}
+
+.somcon {
+  margin: 50px auto; /* Adjust margin for content section */
+  padding: 20px; /* Adjust padding for content section */
+}
+
+.footer {
+  flex-direction: column; /* Change flex direction to column for footer */
+  align-items: center; /* Center align items in footer */
+  padding: 20px; /* Adjust padding for footer */
+}
+
+.feau-wrapper {
+  align-items: center; /* Center align items in features section */
+  padding-bottom: 20px; /* Adjust padding for features section */
+}
+
+.feau, .ben {
+  padding: 0; /* Reset padding for feature items */
+  text-align: center; /* Center align feature items */
+}
+}
+.sidebar {
+position: fixed;
+left: -200px; /* Initially hidden */
+top: 0;
+width: 200px;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.8);
+color: #fff;
+padding-top: 20px;
+z-index: 20;
+transition: left 0.3s ease; /* Smooth transition when showing/hiding */
+}
+
+.sidebar-active {
+left: 0; /* Move sidebar to the left when active */
+}
+
+.sidebar ul {
+list-style-type: none;
+padding: 0;
+}
+
+.sidebar ul li {
+margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+text-decoration: none;
+color: #fff;
+font-size: 18px;
+display: block;
+padding: 10px;
+}
+
+.sidebar ul li a:hover {
+background-color: rgba(255, 255, 255, 0.1);
+}
+/* Apply hover animation to navigation links */ 
